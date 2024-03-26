@@ -1,0 +1,50 @@
+package components
+
+import "github.com/YunpengHuang/wordcount/services"
+
+templ Input(guesses []services.WordValue, hasReacedLimit bool, hasCorrectGuess bool) {
+	<div id="result-display">
+		for _, guess := range guesses {
+			if guess.Colour {
+				<div class="text-center mt-8 space-y-6" style="text-transform: uppercase;">
+					{ guess.Text }
+					<div>
+						{ guess.ValueDifference }
+					</div>
+				</div>
+			} else {
+				<div class="text-center mt-8 space-y-6" style="text-transform: uppercase;">
+					{ guess.Text }
+					<div>
+						{ guess.ValueDifference }
+					</div>
+				</div>
+			}
+		}
+		if hasReacedLimit {
+			<div class="text-center">You have reached the limit!</div>
+		} else if hasCorrectGuess {
+			<div class="text-center">You win!!</div>
+			<button hx-get="/reset">reset</button>
+		} else {
+			<form id="text-input" class="mt-8 space-y-6" hx-get="/result" hx-target="#result-display">
+				<div class="rounded-md shadow-sm -space-y-px">
+					<input
+						class="text-sm text-center bg-gray-100 appearance-none relative block w-full px-3 py-2 border-2 border-gray-400 text-gray-900 rounded-t-md leading-tight focus:outline-none focus:border-indigo-500 focus:z-10 sm:text-sm"
+						maxlength="5"
+						minlength="5"
+						type="text"
+						style="text-transform: uppercase;"
+						pattern="[A-Za-z]+"
+						name="query"
+						required
+					/>
+				</div>
+				<button
+					class="items-center whitespace-nowrap ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+					type="submit"
+				>Submit</button>
+			</form>
+		}
+	</div>
+}
