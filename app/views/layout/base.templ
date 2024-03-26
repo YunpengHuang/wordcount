@@ -4,28 +4,33 @@ import "github.com/YunpengHuang/wordcount/app/components"
 import "github.com/YunpengHuang/wordcount/services"
 
 templ Base(guesses []services.WordValue, hasReachedLimit bool, hasCorrectGuess bool) {
-	<!DOCTYPE html>
-	<html lang="en">
-		<head>
-			<meta charset="UTF-8"/>
-			<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-			<script src="https://unpkg.com/htmx.org@1.9.10" integrity="sha384-D1Kt99CQMDuVetoL1lrYwg5t+9QdHe7NLX/SoJYkXDFfX37iInKRy5xLSi8nO7UC" crossorigin="anonymous"></script>
-			<link href="./css/output.css" rel="stylesheet"/>
-			<title>Math Alphabet</title>
-		</head>
-		<body class="bg-blue-black-gradient bg-topography-pattern">
-			<main class="flex flex-col items-center justify-center min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
-				<div class="max-w-md w-full space-y-8">
-					<div>
-						<h1 class="mt-5 text-center text-3xl font-extrabold text-red-500">Guess the value</h1>
-						<p class="mt-2 text-center text-sm text-gray-600">
-							Enter a 5-lettter word and use the alphabet value to guess the
-							value
-						</p>
-					</div>
-					@components.Input(guesses, hasReachedLimit, hasCorrectGuess)
-				</div>
-			</main>
-		</body>
-	</html>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://unpkg.com/htmx.org@1.9.11"
+    integrity="sha384-D1Kt99CQMDuVetoL1lrYwg5t+9QdHe7NLX/SoJYkXDFfX37iInKRy5xLSi8nO7UC"
+    crossorigin="anonymous"></script>
+  <link href="./css/output.css" rel="stylesheet" />
+  <title>Math Alphabet</title>
+</head>
+
+<body class="bg-blue-black-gradient bg-topography-pattern">
+  <main class="flex flex-col items-center justify-center min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-md w-full space-y-8">
+      <div>
+        <h1 class="mt-5 text-center text-3xl font-extrabold text-red-500">Guess the value</h1>
+        <p class="mt-2 text-center text-sm text-gray-600">
+          Enter a 5-lettter word and use the alphabet value to guess the
+          value
+        </p>
+      </div>
+      @components.Input(guesses, hasReachedLimit, hasCorrectGuess)
+    </div>
+  </main>
+</body>
+
+</html>
 }
